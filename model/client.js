@@ -12,7 +12,12 @@ class Client extends Person {
     }
 
     totalExpenses() {
+        let total = 0;
 
+        for (let i = 0; i < this.orders.length; i++) {
+            total += this.orders[i].price;
+        }
+        return total;
     }
 
     addOrder(order) {
