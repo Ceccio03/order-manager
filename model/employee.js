@@ -12,11 +12,28 @@ class Employee extends Person {
     }
 
     bestClient() {
+        if (this.client.length === 0) {
+            return null;
+        }
 
+        const bestClient = this.clients[0];
+
+        for (let i = 1; i < this.clients.length; i++) {
+            const client = this.clients[i];
+
+            if (client.totalExpenses() > bestClient.totalExpenses()) {
+                bestClient = client;
+            }
+        }
+        return bestClient;
     }
 
     totalEarnings() {
-
+        let accumulator = 0;
+        
+        for (const client of this.clients) {
+            accumulator += client.totalExpenses();
+        }
     }
 
     addClient(client) {

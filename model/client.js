@@ -6,18 +6,20 @@ class Client extends Person {
     }
 
     toString() {
-        const person = 'Nome: ' + this.name + '\n' + 'Cognome: ' + this.surname + '\n' + 'Genere: ' + this.genere + '\n' + 'Età: ' + this.age + '\n' + 'Data di nascita: ' + this.dob + '\n' + 'Indirizzo: ' + this.address + '\n' + 'Ordini: ' + this.orders + '\n';
-
-        return person;
+        return super.toString() + 'Indirizzo: ' + this.address + '\n' + 'Spesa totale: ' + this.totalExpenses().toFixed(2) + '€\n'
     }
 
     totalExpenses() {
-        let total = 0;
+        // const totalExpenses = this.orders.reduce((a, c) => a + c.totalPrice, 0);
 
-        for (let i = 0; i < this.orders.length; i++) {
-            total += this.orders[i].price;
+        // return totalExpenses;
+
+        let accumulator = 0;
+
+        for (const order of this.orders) {
+            accumulator += order.getTotalPrice();
         }
-        return total;
+        return accumulator;
     }
 
     addOrder(order) {
