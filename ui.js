@@ -1,11 +1,7 @@
 class GUI {
-start()
-
-while(true){
-const 
-
-}
-
-
-
+    start() {
+        while(true) {
+            
+        }
+    }
 }
